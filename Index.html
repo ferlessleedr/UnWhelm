@@ -23,12 +23,13 @@
         </button>
       </div>
       <div class="tasklist" id="TaskList">
-        <div class="exampleTask task" id="exampleTask">
+        <div class="exampleTask">
+          <div class="task">
             <input type="checkbox" class="checkBox">
             <div class="taskContent">
               <div class="nameSpace">
                 <input type="text" value="New Task" class="taskTextBox">
-                <button class="delete button" onclick="deleteTask()">X</button>
+                <button class="delete button" onclick="deleteTask(this)">X</button>
               </div>
               <div class="taskAttributes">
                 <div class="attribute">
@@ -43,7 +44,9 @@
               </div>
             </div>
           </div>
-        <button class="task button add" onclick="NewTaskButton()">New Task</button>
+        </div>
+        <!--button class="task button add" onclick="NewTaskButton()">New Task</button-->
+        <button class="task button add" onclick="addTask(this)">New Task</button>
       </div>
     </div>
   </body>
