@@ -1,34 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <title>
-            UnWhelm Practice
-        </title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+      <script type="text/javascript" src="./javascript.js"></script>
+      <script src="./jquery.js"></script>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="styles.css">
+      <title>
+        UnWhelm - a task list at your pace
+      </title>
     </head>
-    <body>
-        <h1>
-            Recipes
-        </h1>
-        <p>
-            <a href="./Recipes/Pasta.html">
-                Pasta
-            </a>
-        </p>
-        <p>
-            <a href="./Recipes/Cake.html">
-                Cake
-            </a>
-        </p>
-        <p>
-            <a href="./Recipes/Sandwich.html">
-                Sandwich
-            </a>
-        </p>
-        <p>
-            <a href="./Pages/about.html">
-                About
-            </a>
-        </p>
-    </body>
+  <body>
+    <div class="header">
+      <div class="title">UnWhelm</div>
+      <div class="login">Login</div>
+    </div>
+    <div class="content-section">
+      <div class="sidebar">
+        <div class="label">Filters</div>
+        <button class="filter button">
+          New Filter
+        </button>
+      </div>
+      <div class="tasklist" id="TaskList">
+        <div class="exampleTask task" id="exampleTask">
+            <input type="checkbox" class="checkBox">
+            <div class="taskContent">
+              <div class="nameSpace">
+                <input type="text" value="New Task" class="taskTextBox">
+                <button class="delete button" onclick="deleteTask()">X</button>
+              </div>
+              <div class="taskAttributes">
+                <div class="attribute">
+                  Start:
+                  <input type="datetime-local" class="taskTime">
+                </div>
+                <div class="attribute">
+                  Due:
+                  <input type="datetime-local" class="taskTime">
+                </div>
+                <button onclick="NewAttribute()">Add Attribute</button>
+              </div>
+            </div>
+          </div>
+        <button class="task button add" onclick="NewTaskButton()">New Task</button>
+      </div>
+    </div>
+  </body>
 </html>

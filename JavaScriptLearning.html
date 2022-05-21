@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Learning</title>
+</head>
+<body>
+  <script>
+    var count = 1
+    var printable = ""
+    while (count < 101) {
+        if (count % 3 == 0) {
+            printable = printable+"fizz";
+        }
+        if (count % 5 == 0) {
+            printable = printable+"buzz";
+        }
+        if (printable == "") {
+            printable = count;
+        }
+    console.log(printable);
+    count++
+    printable = ""
+    }
+  </script>
+</body>
+</html>
