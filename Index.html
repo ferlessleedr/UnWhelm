@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-      <script type="text/javascript" src="./javascript.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
       <script src="./jquery.js"></script>
       <meta charset="UTF-8">
       <link rel="stylesheet" href="styles.css">
@@ -23,15 +24,15 @@
         </button>
       </div>
       <div class="tasklist" id="TaskList">
-        <div class="exampleTask">
+        <div class="exampleTask hiddenClass">
           <div class="task">
-            <input type="checkbox" class="checkBox">
+            <input type="checkbox" class="completeBox">
             <div class="taskContent">
               <div class="nameSpace">
-                <input type="text" value="New Task" class="taskTextBox">
+                <input type="text" placeholder="New Task" class="taskTextBox">
                 <button class="delete button" onclick="deleteTask(this)">X</button>
               </div>
-              <div class="taskAttributes">
+              <div class="mainAttributes">
                 <div class="attribute">
                   Start:
                   <input type="datetime-local" class="taskTime">
@@ -40,14 +41,35 @@
                   Due:
                   <input type="datetime-local" class="taskTime">
                 </div>
-                <button onclick="NewAttribute()">Add Attribute</button>
+                <button class="showButton" onclick="showAttributes(this)">Show Attributes</button>
+                <button class="hideButton hiddenClass" onclick="hideAttributes(this)">Hide Attributes</button>                
+              </div>
+              <div class="dynamicAttributes hiddenClass">
+                <div class="attributeList">
+                  <div class="attribute">
+                    <button class="attributeButton" onclick="attributePicker(this)">Add Attribute</button>
+                    <input type="text" placeholder="Attribute Value" class="hiddenClass">
+                    <button class="delete button hiddenClass" onclick="deleteAttribute(this)">X</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        <!--button class="task button add" onclick="NewTaskButton()">New Task</button-->
         <button class="task button add" onclick="addTask(this)">New Task</button>
       </div>
     </div>
   </body>
+  <div id="ex1" class="modal">
+    <div class="attributeManager">
+      <div class="attributeOption" id="newAttribute">
+        <input type="radio" value="newAttribute" name="attributeOption">
+        <input type="text" placeholder="New Attribute Name" name="newAttributeName">
+      </div>
+      <div class="submitButton">
+        <input type="submit" value="Select" class="button" onclick="submitAttributeName(this)">
+      </div>
+      <a href="#" rel="modal:close" class="close-modal">close</a>
+    </div>
+  </div>
 </html>
