@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+      <script src="./jquery.js"></script>
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="styles.css">
+      <title>
+        UnWhelm. Task, calmly.
+      </title>
+    </head>
+  <body>
+    <div class="header">
+      <div>
+        <div class="title" onclick="apology()">UnWhelm</div>
+      </div>
+      <div class="login">
+        <div class="login hiddenClass" onclick="apology()">Login</div>
+        <input type="file" id="files" name="InputTasks.txt" class="hiddenClass" onchange="readFile()">
+        <label for="files" style="cursor: pointer;">Import</label>/
+        <div class="login" onclick="dataExport()">Export</div>
+      </div>
+    </div>
+    <div class="content-section">
+      <div class="sidebar">
+        <div class="label" onclick="apology()">Filters</div>
+        <button class="filter button" onclick="apology()">
+          New Filter
+        </button>
+      </div>
+      <div class="tasklist" id="TaskList">
+        <div class="exampleTask hiddenClass">
+          <div class="task">
+            <input type="checkbox" class="completeBox">
+            <div class="taskContent">
+              <div class="nameSpace">
+                <input id="Name" type="text" placeholder="New Task" class="taskTextBox" onblur="updateTaskList(this,'Name')">
+                <button class="delete button" onclick="deleteTask(this)">X</button>
+              </div>
+              <div class="mainAttributes">
+                <div class="attribute">
+                  Start:
+                  <input id="Start" type="datetime-local" class="taskTime" onblur="updateTaskList(this,'Start')">
+                </div>
+                <div class="attribute">
+                  Due:
+                  <input id="Due" type="datetime-local" class="taskTime" onblur="updateTaskList(this,'Due')">
+                </div>
+                <button class="showButton" onclick="showAttributes(this)">Show Attributes</button>
+                <button class="hideButton hiddenClass" onclick="hideAttributes(this)">Hide Attributes</button>                
+              </div>
+              <div class="dynamicAttributes hiddenClass">
+                <button class="attributeButton" onclick="attributePicker(this)">Add Attribute</button>
+                <div class="attributeList"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="task button add" id="newTaskButton" onclick="addTask(this)">New Task</button>
+      </div>
+    </div>
+  </body>
+  <div id="AttributeSelector" class="modal">
+    <div class="attributeManager">
+      <div class="attributeOption" id="newAttribute">
+        <input type="radio" value="newAttribute" name="attributeOption">
+        <input type="text" placeholder="New Attribute Name" name="newAttributeName">
+      </div>
+      <div class="submitButton">
+        <input type="submit" value="Select" class="button" onclick="submitAttributeName()">
+      </div>
+      <a href="#" rel="modal:close" class="close-modal">close</a>
+    </div>
+  </div>
+  <div id="Apology" class="modal">
+    I'm sorry, this content isn't completed yet
+  </div>
+  <div id="Export" class="modal">
+    <a download="TaskList.txt" id="downloadlink" style="display: block;cursor: pointer;text-decoration: underline;">Download</a>
+  </div>
+  <div class="exampleAttribute hiddenClass">
+    <div class="attribute">
+      <div class="dynamicAttributeTitle"></div>
+      <input type="text" placeholder="Attribute Value" onblur="updateTaskAttributes(this)">
+      <button class="delete button" onclick="deleteAttribute(this)">X</button>
+    </div>
+  </div>
+</html>

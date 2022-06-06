@@ -19,6 +19,12 @@ body {
   font-weight: 900;
 }
 
+.login {
+  display: flex;
+  justify-content: right;
+  cursor: pointer;
+}
+
 .content-section {
   flex: 1;
   display: flex;
@@ -109,6 +115,10 @@ body {
 .attribute {
   display: flex;
   gap: 10px;
+}
+
+.dynamicAttributes {
+  display: flex;
 }
 
 .nameSpace {
