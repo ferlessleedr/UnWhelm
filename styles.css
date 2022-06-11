@@ -126,7 +126,7 @@ body {
   justify-content: space-between;
 }
 
-.hiddenClass {
+.hiddenClass,.completed {
   display: none;
 }
 

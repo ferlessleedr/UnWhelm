@@ -8,7 +8,7 @@
       <meta charset="UTF-8">
       <link rel="stylesheet" href="styles.css">
       <title>
-        UnWhelm. Task, calmly.
+        Task sans whelm
       </title>
     </head>
   <body>
@@ -33,11 +33,16 @@
       <div class="tasklist" id="TaskList">
         <div class="exampleTask hiddenClass">
           <div class="task">
-            <input type="checkbox" class="completeBox">
+            <input type="checkbox" class="completeBox" onclick="completeButton(this)">
             <div class="taskContent">
               <div class="nameSpace">
-                <input id="Name" type="text" placeholder="New Task" class="taskTextBox" onblur="updateTaskList(this,'Name')">
-                <button class="delete button" onclick="deleteTask(this)">X</button>
+                <div>
+                  <input id="Name" type="text" placeholder="New Task" class="taskTextBox" onblur="updateTaskList(this,'Name')">
+                </div>
+                <div>
+                  <input type="checkbox" class="deleteComplete" content="X" style="transform: scale(1.6);" title="Delete on Completion">
+                  <button class="delete button" onclick="deleteTask(this)">X</button>
+                </div>
               </div>
               <div class="mainAttributes">
                 <div class="attribute">

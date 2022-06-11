@@ -56,19 +56,23 @@ function RecreateTasks() {
     }
 }
 
-function deleteTask(element) {
+function deleteFunction(element) {
     let index = $(element).closest('.task').attr('id')
     TaskList.splice(index,1);
+    var ident = $(element).closest('.task').attr('id')
+    $(element).closest('.task').remove();
+    $('.task').each(function() {
+        var item = $(this);
+        if (item.attr('id') > ident) {
+            item.attr('id',item.attr('id') - 1);
+        }
+    })
+}
+
+function deleteTask(element) {
     let deleteConfirm = confirm('Are you sure?');
     if (deleteConfirm==true) {
-        var ident = $(element).closest('.task').attr('id')
-        $(element).closest('.task').remove();
-        $('.task').each(function() {
-            var item = $(this);
-            if (item.attr('id') > ident) {
-                item.attr('id',item.attr('id') - 1);
-            }
-        })
+        deleteFunction(element);    
     }
 }
 
@@ -186,4 +190,16 @@ function dataCreate() {
     }
     textFile = window.URL.createObjectURL(data);
     return textFile;
+}
+
+function completeButton(element) {
+    var task = $(element).closest('.task');
+    if ($(element).is(':checked') == true) {
+        task.addClass('completed');
+        if (task.find('.deleteComplete').is(':checked') == true) {
+            deleteFunction(element);
+        }
+    } else {
+        task.removeClass('completed');
+    }
 }
