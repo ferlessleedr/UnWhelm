@@ -33,14 +33,14 @@
       <div class="tasklist" id="TaskList">
         <div class="exampleTask hiddenClass">
           <div class="task">
-            <input type="checkbox" class="completeBox" onclick="completeButton(this)">
+            <input type="checkbox" class="completeBox" onclick="completeButton(this)" id="completed">
             <div class="taskContent">
               <div class="nameSpace">
                 <div>
                   <input id="Name" type="text" placeholder="New Task" class="taskTextBox" onblur="updateTaskList(this,'Name')">
                 </div>
                 <div>
-                  <input type="checkbox" class="deleteComplete" content="X" style="transform: scale(1.6);" title="Delete on Completion">
+                  <input type="checkbox" class="deleteComplete" content="X" style="transform: scale(1.6);" title="Delete on Completion" onclick="deleteOnComplete(this)" id="deleteOnComplete">
                   <button class="delete button" onclick="deleteTask(this)">X</button>
                 </div>
               </div>

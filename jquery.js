@@ -44,6 +44,14 @@ function RecreateTasks() {
             Object.keys(arrayElement).forEach(key => {
                 var keyVariable = key
                 if (key != 'taskAttributes') {
+                    if ($(taskElement).find('#' + keyVariable).is(':checkbox') == true) {
+                        if (typeof arrayElement[keyVariable] !== 'undefined' && arrayElement[keyVariable].length > 0) {
+                            $(taskElement).find('#' + keyVariable).prop('checked',true);
+                            if (keyVariable == 'completed') {
+                                taskElement.addClass('completed');
+                            }
+                        }
+                    }
                     $(taskElement).find('#' + keyVariable).attr('value',arrayElement[keyVariable])
                 } else {
                     for (j = 0; j<arrayElement[keyVariable].length; j++) {
@@ -52,6 +60,8 @@ function RecreateTasks() {
                     }
                 }
             });
+            //when done uncomment the below line and remove the identical line above
+            //$('.exampleTask').before(taskElement);
         }
     }
 }
@@ -194,12 +204,26 @@ function dataCreate() {
 
 function completeButton(element) {
     var task = $(element).closest('.task');
+    var ident = task.attr('id');
     if ($(element).is(':checked') == true) {
         task.addClass('completed');
         if (task.find('.deleteComplete').is(':checked') == true) {
             deleteFunction(element);
+        } else {
+            TaskList[ident][element.id] = new Date();
         }
     } else {
         task.removeClass('completed');
+        var ident = $(element).closest('.task').attr('id');
+        delete TaskList[ident][element.id]
+    }
+}
+
+function deleteOnComplete(element) {
+    var ident = $(element).closest('.task').attr('id');
+    if ($(element).is(':checked') == true) {
+        TaskList[ident][element.id] = new Date();
+    } else {
+        delete TaskList[ident][element.id]
     }
 }
