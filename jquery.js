@@ -1,6 +1,7 @@
 var Attributes = new Array()
 var TaskList = new Array()
 var selectButton
+var completedVisible = false
 
 /*
 const xhttp = new XMLHttpRequest();
@@ -206,14 +207,19 @@ function completeButton(element) {
     var task = $(element).closest('.task');
     var ident = task.attr('id');
     if ($(element).is(':checked') == true) {
-        task.addClass('completed');
+        if (completedVisible == false) {
+            task.addClass('completedHidden')
+        } else {
+            task.addClass('completedShown')
+        }
         if (task.find('.deleteComplete').is(':checked') == true) {
             deleteFunction(element);
         } else {
             TaskList[ident][element.id] = new Date();
         }
     } else {
-        task.removeClass('completed');
+        task.removeClass('completedHidden')
+        task.removeClass('completedShown')
         var ident = $(element).closest('.task').attr('id');
         delete TaskList[ident][element.id]
     }
@@ -225,5 +231,31 @@ function deleteOnComplete(element) {
         TaskList[ident][element.id] = new Date();
     } else {
         delete TaskList[ident][element.id]
+    }
+}
+
+function toggleCompletedDisplay() {
+    if (completedVisible == false) {
+        $('.completedHidden').addClass('completedShown')
+        $('.completedHidden').removeClass('completedHidden')
+        completedVisible = true
+        $('#showCompleted').html('Hide Completed')
+    } else {
+        $('.completedShown').addClass('completedHidden')
+        $('.completedShown').removeClass('completedShown')
+        completedVisible = false
+        $('#showCompleted').html('Show Completed')
+    }
+}
+
+function deleteCompleted() {
+    let deleteConfirm = confirm('Are you sure?');
+    if (deleteConfirm==true) {
+        $('.completedShown').each(function() {
+            deleteFunction(this)
+        })
+        $('.completedHidden').each(function() {
+            deleteFunction(this)
+        })
     }
 }

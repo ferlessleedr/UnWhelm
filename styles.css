@@ -40,6 +40,7 @@ body {
   padding: 16px;
   width: 15vw;
   min-width: fit-content;
+  max-width: 150px;
   flex-direction: column;
 }
 
@@ -126,8 +127,16 @@ body {
   justify-content: space-between;
 }
 
-.hiddenClass,.completed {
+.hiddenClass {
   display: none;
+}
+
+.completedHidden {
+  display: none;
+}
+
+.completedShown {
+  display: flex;
 }
 
 .showButton,.hideButton {

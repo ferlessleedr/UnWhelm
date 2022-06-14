@@ -14,7 +14,7 @@
   <body>
     <div class="header">
       <div>
-        <div class="title" onclick="apology()">UnWhelm</div>
+        <p><a href="#settingsModal" rel="modal:open" title="Settings">UnWhelm</a></p>
       </div>
       <div class="login">
         <div class="login hiddenClass" onclick="apology()">Login</div>
@@ -67,6 +67,10 @@
       </div>
     </div>
   </body>
+  <div id="settingsModal" class="modal">
+    <button id="showCompleted" onclick="toggleCompletedDisplay()">Show Completed</button>
+    <button id="deleteCompleted" onclick="deleteCompleted()">Delete Completed</button>
+  </div>
   <div id="AttributeSelector" class="modal">
     <div class="attributeManager">
       <div class="attributeOption" id="newAttribute">
