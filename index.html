@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <script src="https://apis.google.com/js/platform.js" async defer></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
       <script src="./jquery.js"></script>
       <meta charset="UTF-8">
+      <meta name="google-signin-client_id" content="641496488644-8brurkbb9sv0s1avso51an2lnf4us7u6.apps.googleusercontent.com.apps.googleusercontent.com">
       <link rel="stylesheet" href="styles.css">
       <title>
-        Task sans whelm
+        Tasks, sans whelm
       </title>
     </head>
   <body>
@@ -18,9 +20,12 @@
       </div>
       <div class="login">
         <div class="login hiddenClass" onclick="apology()">Login</div>
-        <input type="file" id="files" name="InputTasks.txt" class="hiddenClass" onchange="readFile()">
-        <label for="files" style="cursor: pointer;">Import</label>/
-        <div class="login" onclick="dataExport()">Export</div>
+        <p><a href="#loginModal" rel="modal:open">Login</a></p>
+        <!--
+          <input type="file" id="files" name="InputTasks.txt" class="hiddenClass" onchange="readFile()">
+          <label for="files" style="cursor: pointer;">Import</label>/
+          <div class="login" onclick="dataExport()">Export</div>
+        -->
       </div>
     </div>
     <div class="content-section">
@@ -82,6 +87,9 @@
       </div>
       <a href="#" rel="modal:close" class="close-modal">close</a>
     </div>
+  </div>
+  <div id="loginModal" class="modal">
+    <div class="g-signin2" data-onsuccess="onSignIn"></div>
   </div>
   <div id="Apology" class="modal">
     I'm sorry, this content isn't completed yet
